@@ -38,7 +38,7 @@ app.use((req, res, next) => {
 })
 
 
-app.use(titlesRouter);
+app.use('/titles', titlesRouter);
 app.use('/', indexRouter);
 
 // catch 404 and forward to error handler
