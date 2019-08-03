@@ -1,12 +1,13 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var mongoose = require('mongoose');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 
 //Set up mongoose connection
-var mongoDB = 'mongodb://readonly:turner@ds043348.mongolab.com:43348/dev-challenge';
+const mongoDB = 'mongodb://readonly:turner@ds043348.mongolab.com:43348/dev-challenge';
 mongoose.connect(mongoDB, { useNewUrlParser: true });
 
 //Get the default connection
@@ -24,11 +25,17 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+
+app.use(bodyParser.json());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use((req, res, next) => {
+  console.log(`${new Date().toString()} => ${req.originalUrl}`, req.body)
+  next();
+})
 
 
 app.use(titlesRouter);
