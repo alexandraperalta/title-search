@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Card, CardBody, CardText, Row} from 'reactstrap'
+import {Card, CardBody, CardText, Row, Col} from 'reactstrap'
 import MovieCard from '../../components/MovieCard'
 
 class ResultsContainer extends Component {
@@ -10,7 +10,8 @@ class ResultsContainer extends Component {
         return (
             <Card>
                 <CardBody>
-                    <Row>
+                    <Row >
+                        <Col>
                     {results.length > 0 
                         ?
                             results.map(movie => (
@@ -29,6 +30,7 @@ class ResultsContainer extends Component {
                         ) : (
                             <CardText>Search above to get results.</CardText>
                     )}
+                    </Col>
                     </Row>
                 </CardBody>
             </Card>    

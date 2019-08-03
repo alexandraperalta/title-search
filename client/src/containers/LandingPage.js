@@ -10,27 +10,26 @@ class LandingPage extends Component {
         results: []
     }
 
-
     handleSearch = (userInput) => {
-        API.getTitles(userInput)
+        API.searchTitle(userInput)
             .then(res => {
                 this.setState({
                     results: res.data
-                });
+                });                
             })
             .catch(err => console.log(err))
     }
 
     render() {
         return (
-            <Container fluid className="mt-3">
+            <Container>
                 <Row>
                     <Col sm="12" md={{ size: 6, offset: 3 }}>
                         <SearchBar handleSearch={this.handleSearch} />
                     </Col>
                 </Row>
                 <Row>
-                    <Col sm="12" md={{ size: 6, offset: 3 }}>
+                    <Col>
                         <ResultsContainer results={this.state.results}  />
                     </Col>
                 </Row>
