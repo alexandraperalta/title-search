@@ -1,6 +1,6 @@
 ## To install
 The client and server were implemented separately. In order to run, you'll have to run `npm install`
-in both the client and server folders, as well as the main project folder.
+in both the root and server folders.
 
 After that an `npm start` at the project root should open the project.
 
