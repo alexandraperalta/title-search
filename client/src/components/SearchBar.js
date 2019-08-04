@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { Card, CardBody, CardTitle, Button, Form, FormGroup, Label, Input, Col, CardText } from 'reactstrap';
+import { Card, CardBody, CardTitle, Button, Form, FormGroup, Input, Col } from 'reactstrap';
 
 class SearchBar extends Component {
     state = {
-        userInput: ''
+        userInput: '',
+        movie: '',
+        genre: '',
+        person: ''
     }
-
-
     handleInputChange = e => {
         const { value } = e.target
         this.setState({

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Card, CardBody, CardTitle, CardFooter, CardSubtitle, CardText, Collapse, Button } from 'reactstrap'
+import './Movie.css';
 
 class MovieCard extends Component {
     constructor(props) {
@@ -17,23 +18,19 @@ class MovieCard extends Component {
 
         return (
             <Card>
-                <CardBody>
-                    <CardTitle>{movie.title}{' ('}{movie.year}{') '}</CardTitle>
-                    <Button color="primary" onClick={this.toggle}>View details</Button>
+                <CardBody className='clickableTitle' onClick={this.toggle}>
+                    <CardTitle >{movie.title}{' ('}{movie.year}{') '}</CardTitle>
                     <Collapse isOpen={this.state.collapse}>
-                        <CardText className="text-muted">Genre: {movie.genres.join(', ')}</CardText>
-                        <CardSubtitle>Starring/Directing:</CardSubtitle>
-                        <CardText>{this.props.actors.map(actor => (
+                        <CardText className="text-muted">Genre: {movie.genres.join(', ')}</CardText>                        
+                        <CardSubtitle>Plot:</CardSubtitle>
+                        <CardText>{movie.story}</CardText><CardSubtitle>Starring/Directing:</CardSubtitle>
+                        <CardText className="text-muted">{this.props.actors.map(actor => (
                             ` ${actor.Name} (${actor.RoleType}) |`
                         ))}
-                        </CardText>
-                        <CardSubtitle>Plot:</CardSubtitle>
-                        <CardText>{movie.story}</CardText>
+                        </CardText>                        
                     </Collapse>
-
                 </CardBody>
             </Card>
-
         )
     }
 }
