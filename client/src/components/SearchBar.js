@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
-import { Card, CardBody, CardTitle, Button, Form, FormGroup, Input, Col } from 'reactstrap';
+import { Card, CardBody, CardTitle, Button, Form, FormGroup, Input, Col, Label } from 'reactstrap';
 
 class SearchBar extends Component {
     state = {
         userInput: '',
-        movie: '',
+        movie: "",
         genre: '',
         person: ''
     }
     handleInputChange = e => {
-        const { value } = e.target
+        const {name,  value } = e.target
         this.setState({
-            userInput: value
+            [name]: value
         });
+        console.log(this.state)
     };
 
     handleClick = e => {
@@ -27,7 +28,11 @@ class SearchBar extends Component {
                 <CardTitle>Movie Search</CardTitle>
                 <Form>
                     <FormGroup>
-                        <Input name="title" value={this.state.userInput} onChange={this.handleInputChange}/>
+                        <Input name="movie" value={this.state.movie} onChange={this.handleInputChange}/>
+                    </FormGroup>
+                    <FormGroup>
+                        <Label>Genre</Label>
+                        <Input name="genre" value={this.state.genre} onChange={this.handleInputChange}/>
                     </FormGroup>
                     <FormGroup className="mt-2" row>
                         <Col sm={{ size: 12 }}>

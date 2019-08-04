@@ -7,6 +7,7 @@ export default {
   },
   // Gets title bassed on search input
   searchTitle: function(input) {
-    return axios.get("/titles/search?name=" + input.userInput);
+    return axios.get("/titles/search?name=" + input.movie
+    + "&genre=" + input.genre);
   }
 };

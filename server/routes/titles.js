@@ -16,12 +16,19 @@ router.get('/', function(req, res) {
 router.get('/search?', function(req, res) {
   console.log(req.query)
   const titleName = req.query.name;
+  const genre = req.query.genre;
   TitleModel
     .find({
       'TitleName' : {
         $regex: titleName, 
-        $options: 'i' }
+        $options: 'i' 
+      },
+      'Genres' : {
+        $regex: genre, 
+        $options: 'i'         
+      }
     })
+    .sort({'TitleName': 1})
     .then(titles => {
     res.json(titles)
   })

@@ -23,8 +23,9 @@ class MovieCard extends Component {
                     <Collapse isOpen={this.state.collapse}>
                         <CardText className="text-muted">Genre: {movie.genres.join(', ')}</CardText>                        
                         <CardSubtitle>Plot:</CardSubtitle>
-                        <CardText>{movie.story}</CardText><CardSubtitle>Starring/Directing:</CardSubtitle>
-                        <CardText className="text-muted">{this.props.actors.map(actor => (
+                        <CardText>{movie.story}</CardText>
+                        <CardSubtitle>Starring:</CardSubtitle>
+                        <CardText className="text-muted">{movie.actors.map(actor => (
                             ` ${actor.Name} (${actor.RoleType}) |`
                         ))}
                         </CardText>                        

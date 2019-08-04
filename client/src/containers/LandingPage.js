@@ -15,7 +15,8 @@ class LandingPage extends Component {
             .then(res => {
                 this.setState({
                     results: res.data
-                });                
+                });
+                console.log(this.state.results);                
             })
             .catch(err => console.log(err))
     }
